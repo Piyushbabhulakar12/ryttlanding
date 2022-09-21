@@ -33,6 +33,9 @@ const Strategy = () => {
               fontSize: "35px",
               textAlign: "center",
               py: "15px",
+              "@media only screen and (max-width: 900px)": {
+                fontSize: "25px",
+              },
             }}
           >
             Strategy and Recommendation
@@ -40,7 +43,13 @@ const Strategy = () => {
           <Typography
             variant="subtitle1"
             component="div"
-            sx={{ textAlign: "center", px: "180px" }}
+            sx={{
+              textAlign: "center",
+              px: "180px",
+              "@media only screen and (max-width: 900px)": {
+                px: "0px",
+              },
+            }}
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industrys standard dummy text
@@ -51,7 +60,7 @@ const Strategy = () => {
 
         <Grid container sx={{ my: "20px" }} spacing={5}>
           {strategydata.map((data, index) => (
-            <Grid item xs={6} key={index}>
+            <Grid item xs={12} sm={12} md={6} key={index}>
               <BasicCard
                 smtitle={data.smtitle}
                 title={data.title}

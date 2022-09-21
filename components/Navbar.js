@@ -3,6 +3,8 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Menu,
+  MenuItem,
   ThemeProvider,
 } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -12,40 +14,26 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import * as React from "react";
 import BtnDefault from "./BtnDefault";
+import Drawer from "./Drawer";
+import { listmenu } from "./ListMenu";
 import theme from "./theme";
 
-const listmenu = [
-  {
-    title: "Home",
-    link: "/",
-  },
-  {
-    title: "About Us",
-    link: "/about-us",
-  },
-  {
-    title: "Blogs",
-    link: "/model",
-  },
-  {
-    title: "Tools",
-    link: "/tools",
-  },
-  {
-    title: "Product",
-    link: "/product",
-  },
-  {
-    title: "Technology",
-    link: "/technolgy",
-  },
-  {
-    title: "Service",
-    link: "/service",
-  },
-];
-
 export default function Navbar() {
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleChange = (event) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Box>
@@ -55,15 +43,49 @@ export default function Navbar() {
           sx={{ boxShadow: "none" }}
         >
           <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              color="primary"
-              flexGrow="0"
-              sx={{ fontWeight: "600" }}
+            <Box
+              sx={{
+                display: "none",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                minwidth: "100vh",
+                flexGrow: "1",
+                "@media only screen and (max-width: 900px)": {
+                  display: "flex",
+                },
+              }}
             >
-              rytt
-            </Typography>
+              <Drawer />
+              <Link href="/">
+                <Typography
+                  variant="h6"
+                  component="div"
+                  color="primary"
+                  flexGrow="0"
+                  sx={{ fontWeight: "600", cursor: "pointer" }}
+                >
+                  rytt
+                </Typography>
+              </Link>
+            </Box>
+            <Link href="/">
+              <Typography
+                variant="h6"
+                component="div"
+                color="primary"
+                flexGrow="0"
+                sx={{
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  "@media only screen and (max-width: 900px)": {
+                    display: "none",
+                  },
+                }}
+              >
+                rytt
+              </Typography>
+            </Link>
+
             <Box
               sx={{
                 display: "flex",
@@ -71,6 +93,9 @@ export default function Navbar() {
                 alignItems: "center",
                 minwidth: "100vh",
                 flexGrow: "1",
+                "@media only screen and (max-width: 900px)": {
+                  display: "none",
+                },
               }}
             >
               <List>
@@ -86,6 +111,48 @@ export default function Navbar() {
                       </ListItemButton>
                     </Link>
                   ))}
+
+                  <>
+                    <ListItemButton
+                      onClick={handleMenu}
+                      sx={{
+                        textAlign: "center",
+                      }}
+                    >
+                      <ListItemText>Strategy</ListItemText>
+                    </ListItemButton>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                      sx={{
+                        boxShadow: "none",
+                        "& .MuiMenu-paper": {
+                          boxShadow:
+                            "0px 0px 0px -3px rgb(0 0 0 / 10%), 0px 8px 10px 1px rgb(0 0 0 / 0%), 0px 3px 14px 2px rgb(0 0 0 / 5%);",
+                          background: "#fff",
+                        },
+                      }}
+                    >
+                      <Link href="/">
+                        <MenuItem
+                          onClick={handleClose}
+                          sx={{ pr: "60px", textAlign: "left", py: "12px" }}
+                        >
+                          All Time High (ATH)
+                        </MenuItem>
+                      </Link>
+                      <Link href="/">
+                        <MenuItem
+                          onClick={handleClose}
+                          sx={{ pr: "60px", textAlign: "left", py: "12px" }}
+                        >
+                          Trend Status
+                        </MenuItem>
+                      </Link>
+                    </Menu>
+                  </>
                 </ListItem>
               </List>
             </Box>

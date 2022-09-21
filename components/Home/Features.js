@@ -62,7 +62,7 @@ const Features = () => {
 
           <Grid container sx={{ my: "50px" }}>
             {fetures.map((data, index) => (
-              <Grid key={index} item xs={4}>
+              <Grid key={index} item xs={12} sm={6} md={4}>
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                   <Image
                     src={data.img}

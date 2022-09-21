@@ -4,6 +4,7 @@ import React from "react";
 import BlogApi from "../API/BlogApi";
 import CatagoryCard from "./CatagoryCard";
 import CatagoryList from "./CatagoryList";
+import DrawerListMobile from "./DrawerListMobile";
 
 const Catagory = ({ catagory_name }) => {
   return (
@@ -38,19 +39,38 @@ const Catagory = ({ catagory_name }) => {
         )}
 
         <Grid container sx={{ py: "50px" }} spacing={2}>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={12} md={4}>
             <Box
               sx={{
                 border: "1px solid #e1e1e1",
                 borderRadius: "10px",
                 padding: "5px",
+                "@media only screen and (max-width: 900px)": {
+                  display: "none",
+                },
               }}
             >
               <CatagoryList />
             </Box>
+            <Box
+              sx={{
+                display: "none",
+
+                "@media only screen and (max-width: 900px)": {
+                  display: "block",
+                },
+              }}
+            >
+              <DrawerListMobile />
+            </Box>
           </Grid>
-          <Grid item xs={8}>
-            <Box sx={{ px: "20px" }}>
+          <Grid item xs={12} sm={12} md={8}>
+            <Box
+              sx={{
+                px: "20px",
+                "@media only screen and (max-width: 900px)": { px: "0px" },
+              }}
+            >
               <Breadcrumbs aria-label="breadcrumb">
                 <Link underline="hover" color="inherit" href="/model">
                   Model

@@ -10,6 +10,11 @@ const ComingSoonForm = () => {
           alignItems: "baseline",
           gap: "15px",
           mt: "15px",
+          "@media only screen and (max-width: 900px)": {
+            display: "grid",
+            justifyContent: "unset",
+            alignItems: "baseline",
+          },
         }}
       >
         <TextField
@@ -17,7 +22,10 @@ const ComingSoonForm = () => {
           label="Enter You Email Id"
           variant="outlined"
           size="small"
-          sx={{ width: "60%" }}
+          sx={{
+            width: "60%",
+            "@media only screen and (max-width: 900px)": { width: "100%" },
+          }}
         />
         <Box>
           <BtnDefault title="Notify Me" url="/model" />

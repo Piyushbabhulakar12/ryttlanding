@@ -61,7 +61,7 @@ const Content = () => {
 
         <Grid container sx={{ my: "20px" }} spacing={5}>
           {strategydata.map((data, index) => (
-            <Grid item xs={6} key={index}>
+            <Grid item xs={12} sm={12} md={6} key={index}>
               <BasicCard
                 smtitle={data.smtitle}
                 title={data.title}

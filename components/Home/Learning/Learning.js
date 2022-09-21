@@ -15,6 +15,9 @@ const Learning = () => {
               fontSize: "35px",
               textAlign: "center",
               py: "15px",
+              "@media only screen and (max-width: 900px)": {
+                fontSize: "25px",
+              },
             }}
           >
             Lorem Ipsum is simply dummy
@@ -22,7 +25,13 @@ const Learning = () => {
           <Typography
             variant="subtitle1"
             component="div"
-            sx={{ textAlign: "center", px: "180px" }}
+            sx={{
+              textAlign: "center",
+              px: "180px",
+              "@media only screen and (max-width: 900px)": {
+                px: "0px",
+              },
+            }}
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industrys standard dummy text
@@ -32,7 +41,7 @@ const Learning = () => {
         </Box>
 
         <Grid container sx={{ my: "40px" }}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={12} md={6}>
             <Image
               src="/assets/Image/Online learning.png"
               height="50px"
@@ -42,7 +51,7 @@ const Learning = () => {
               alt="Hero Section"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={12} md={6}>
             <Typography
               variant="h3"
               component="div"
@@ -52,6 +61,11 @@ const Learning = () => {
                 textAlign: "left",
                 marginRight: "120px",
                 lineHeight: "1.4",
+                "@media only screen and (max-width: 900px)": {
+                  px: "0px",
+                  marginRight: "0px",
+                  fontSize: "30px",
+                },
               }}
             >
               This Feature Will Come Soon
@@ -59,7 +73,13 @@ const Learning = () => {
             <Typography
               variant="subtitle1"
               component="div"
-              sx={{ textAlign: "left", marginRight: "120px" }}
+              sx={{
+                textAlign: "left",
+                marginRight: "120px",
+                "@media only screen and (max-width: 900px)": {
+                  marginRight: "0px",
+                },
+              }}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industrys standard dummy text
